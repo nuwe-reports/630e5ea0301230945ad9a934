@@ -25,6 +25,6 @@ public class OfferTotalRegistered {
     private String description;
     private String[] skills;
     private LocalDate releaseDate;
-    private CompanyShort owner;
+    private CompanySimplify owner;
     private long totalRegistered;
 }

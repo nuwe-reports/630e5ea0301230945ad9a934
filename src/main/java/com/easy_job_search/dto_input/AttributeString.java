@@ -7,7 +7,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class AttributeSomeString {
+public class AttributeString {
 
-    private String someString;
+    private String name;
 }

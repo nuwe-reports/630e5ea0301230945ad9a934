@@ -1,5 +1,6 @@
 package com.easy_job_search.service;
 
+import com.easy_job_search.dto_output.OfferTotalRegistered;
 import com.easy_job_search.entity.JobType;
 import com.easy_job_search.entity.ModalityJob;
 import com.easy_job_search.entity.Offer;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -38,10 +40,10 @@ public class OfferService {
 
     public List<Offer> findOfferByPosition(String position){
         List<Offer> offers = this.findAllOffer();
-        List<Offer> offersByPosition = offers.stream()
-                .filter(x -> x.getPosition().equalsIgnoreCase(position))
+        List<Offer> offerByPosition = offers.stream()
+                .filter(offer -> offer.getPosition().equalsIgnoreCase(position))
                 .collect(Collectors.toList());
-        return offersByPosition;
+        return offerByPosition;
     }
 
     public List<Offer> findOfferByJobType(JobType jobType){
@@ -71,38 +73,40 @@ public class OfferService {
     public List<Offer> findOfferBySector(String sector){
         List<Offer> offers = this.findAllOffer();
         List<Offer> offersBySector = offers.stream()
-                .filter(x -> x.getSector().equalsIgnoreCase(sector))
+                .filter(x -> x.getSector().contains(sector))
                 .collect(Collectors.toList());
         return offersBySector;
     }
 
-    public List<Offer> findOfferBySkill(String skill){
+    public List<Offer> findOfferBySkill(String skill) {
         List<Offer> offers = this.findAllOffer();
         List<Offer> offersBySkill = new ArrayList<>();
-        offers.stream().forEach( x ->
-        {
-            if(x.getSkills().equals(skill)){
-                offersBySkill.add(x);
+        offers.stream().forEach(offer ->{
+            String arrayAsString = Arrays.toString(offer.getSkills());
+            if(arrayAsString.contains(skill)){
+                offersBySkill.add(offer);
             }
-        });
-//        for(Offer o: offers){
-//            if(o.getSkills().contains(skill)){
-//                offersBySkill.add(o);
-//            }
-//        }
+                });
         return offersBySkill;
     }
 
-    public List<Offer> findOfferByReleaseDate(String localDate){
-        LocalDate.parse(localDate);
+    public List<Offer> findOfferByOwnerId(long idCompany) {
         List<Offer> offers = this.findAllOffer();
-        List<Offer> offersByReleaseDate = offers.stream()
-                .filter(x -> x.getReleaseDate().equals(localDate))
+        List<Offer> offersByOwner = offers.stream()
+                .filter(offer -> offer.getOwner().getId() == idCompany)
                 .collect(Collectors.toList());
-        return offersByReleaseDate;
+        return offersByOwner;
     }
 
-    public void deleteOfferById(Long id){
+    public List<Offer> findOfferByOwnerName(String name){
+        List<Offer> offers = this.findAllOffer();
+        List<Offer> offersByOwner = offers.stream()
+                .filter(offer -> offer.getOwner().getFullName().equalsIgnoreCase(name))
+                .collect(Collectors.toList());
+        return offersByOwner;
+    }
+
+    public void deleteOfferById(long id){
         Offer offer = this.findOfferById(id);
         offerRepo.delete(offer);
     }

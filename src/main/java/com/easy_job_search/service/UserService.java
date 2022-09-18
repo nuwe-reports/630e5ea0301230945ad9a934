@@ -28,13 +28,9 @@ public class UserService {
         return op.orElse(null);
     }
 
-    public void deleteUserById(Long id){
+    public void deleteUserById(long id){
         userRepo.deleteById(id);
     }
 
-    public void deleteUserByEmail(String email){
-        User user = this.findUserByEmail(email);
-        userRepo.delete(user);
-    }
 
 }

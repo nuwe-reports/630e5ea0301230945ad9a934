@@ -1,8 +1,13 @@
 package com.easy_job_search.controller;
 
+import com.easy_job_search.dto_input.AttributeId;
+import com.easy_job_search.dto_input.AttributeString;
 import com.easy_job_search.dto_input.RegisterOffer;
 import com.easy_job_search.dto_output.OfferResponse;
 import com.easy_job_search.dto_output.OfferTotalRegistered;
+import com.easy_job_search.dto_output.OfferWithCandidate;
+import com.easy_job_search.entity.JobType;
+import com.easy_job_search.entity.ModalityJob;
 import com.easy_job_search.entity.Offer;
 import com.easy_job_search.helper.Helper;
 import com.easy_job_search.service.CandidateService;
@@ -81,17 +86,160 @@ public class OfferController {
     }
 
     @GetMapping("offers-basic-data")
-    private ResponseEntity<List<OfferResponse>> findAllOffersWithOutRegistered(){
+    private ResponseEntity<List<OfferResponse>> getAllOffersWithOutRegistered(){
         List<Offer> offers = offerService.findAllOffer();
         return new ResponseEntity<List<OfferResponse>>(Helper.convertListOfferToListOfferResponse(offers),
                 HttpStatus.OK);
     }
 
-    @GetMapping("offers-numbers-registered")
-    private ResponseEntity<List<OfferTotalRegistered>> findAllOffersWithRegistered(){
+    @GetMapping("offers-total-registered")
+    private ResponseEntity<List<OfferTotalRegistered>> getAllOffersWithTotalRegistered(){
         List<Offer> offers = offerService.findAllOffer();
-        return new ResponseEntity<List<OfferTotalRegistered>>(Helper.convertListOfferToOfferTotalRegistered(offers),
+        return new ResponseEntity<List<OfferTotalRegistered>>(Helper.convertListOfferToListOfferTotalRegistered(offers),
                 HttpStatus.OK);
     }
+
+    @GetMapping("offer-byId-totalRegistered")
+    private ResponseEntity<OfferTotalRegistered> getOfferByIdWithTotalRegistered(@RequestBody AttributeId idOffer){
+        ResponseEntity<OfferTotalRegistered> response = new ResponseEntity<OfferTotalRegistered>(HttpStatus.NO_CONTENT);
+        try{
+            Offer offer = offerService.findOfferById(idOffer.getId());
+            response =  new ResponseEntity<OfferTotalRegistered>(Helper.convertOfferToOfferTotalRegistered(offer),
+                    HttpStatus.OK);
+        }catch(IllegalArgumentException ex){
+            ex.printStackTrace();
+        }
+        return response;
+
+    }
+
+    @GetMapping("offer-byId-withCandidates")
+    private ResponseEntity<OfferWithCandidate> getOfferByIdWithCandidates(@RequestBody AttributeId idOffer){
+        ResponseEntity<OfferWithCandidate> response = new ResponseEntity<OfferWithCandidate>(HttpStatus.NO_CONTENT);
+        try{
+            Offer offer = offerService.findOfferById(idOffer.getId());
+            response =  new ResponseEntity<OfferWithCandidate>(Helper.convertOfferToOfferWithCandidate(offer),
+                    HttpStatus.OK);
+        }catch (IllegalArgumentException ex){
+            ex.printStackTrace();
+        }
+        return response;
+    }
+
+    @GetMapping("offers-byPosition/{position}")
+    private ResponseEntity<List<OfferTotalRegistered>> getOfferByPosition (@PathVariable("position") String position){
+        ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>(HttpStatus.NO_CONTENT);
+            List<Offer> offers = offerService.findOfferByPosition(position);
+            if(offers.size() != 0){
+                response =  new ResponseEntity<List<OfferTotalRegistered>>
+                        (Helper.convertListOfferToListOfferTotalRegistered(offers), HttpStatus.OK);
+            }
+        return response;
+    }
+
+    @GetMapping("offers-byJobType/{jobType}")
+    private ResponseEntity<List<OfferTotalRegistered>> getOfferByJobType (@PathVariable("jobType") JobType jobType){
+        ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>(HttpStatus.NO_CONTENT);
+        List<Offer> offers = offerService.findOfferByJobType(jobType);
+        if(offers.size() != 0){
+            response =  new ResponseEntity<List<OfferTotalRegistered>>
+                    (Helper.convertListOfferToListOfferTotalRegistered(offers), HttpStatus.OK);
+        }
+        return response;
+    }
+
+    @GetMapping("offers-byModality/{modality}")
+    private ResponseEntity<List<OfferTotalRegistered>> getOfferByModalityJob
+            (@PathVariable("modality") ModalityJob modality){
+        ResponseEntity<List<OfferTotalRegistered>> response =
+                new ResponseEntity<List<OfferTotalRegistered>>(HttpStatus.NO_CONTENT);
+        List<Offer> offers = offerService.findOfferByModality(modality);
+        if(offers.size() != 0){
+            response =  new ResponseEntity<List<OfferTotalRegistered>>
+                    (Helper.convertListOfferToListOfferTotalRegistered(offers), HttpStatus.OK);
+        }
+        return response;
+    }
+
+    @GetMapping("offers-byLocation/{location}")
+    private ResponseEntity<List<OfferTotalRegistered>> getOfferByLocation (@PathVariable("location") String location){
+        ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>(HttpStatus.NO_CONTENT);
+        List<Offer> offers = offerService.findOfferByLocation(location);
+        if(offers.size() != 0){
+            response =  new ResponseEntity<List<OfferTotalRegistered>>
+                    (Helper.convertListOfferToListOfferTotalRegistered(offers), HttpStatus.OK);
+        }
+        return response;
+    }
+
+    @GetMapping("offers-bySector/{sector}")
+    private ResponseEntity<List<OfferTotalRegistered>> getOfferBySector (@PathVariable("sector") String sector){
+        ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>(HttpStatus.NO_CONTENT);
+        List<Offer> offers = offerService.findOfferBySector(sector);
+        if(offers.size() != 0){
+            response =  new ResponseEntity<List<OfferTotalRegistered>>
+                    (Helper.convertListOfferToListOfferTotalRegistered(offers), HttpStatus.OK);
+        }
+        return response;
+    }
+
+    @GetMapping("offers-bySkill/{skill}")
+    private ResponseEntity<List<OfferTotalRegistered>> getOfferBySkill (@PathVariable("skill") String skill){
+        ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>(HttpStatus.NO_CONTENT);
+        List<Offer> offers = offerService.findOfferBySkill(skill);
+        if(offers.size() != 0){
+            response =  new ResponseEntity<List<OfferTotalRegistered>>
+                    (Helper.convertListOfferToListOfferTotalRegistered(offers), HttpStatus.OK);
+        }
+        return response;
+    }
+
+    @GetMapping("offers-byOwnerId")
+    private ResponseEntity<List<OfferWithCandidate>> getOfferByOwnerId (@RequestBody AttributeId idCompany){
+        ResponseEntity<List<OfferWithCandidate>> response = new ResponseEntity<List<OfferWithCandidate>>
+                (HttpStatus.NO_CONTENT);
+        try{
+            List<Offer> offers = offerService.findOfferByOwnerId(idCompany.getId());
+            response =  new ResponseEntity<List<OfferWithCandidate>>(Helper.convertListOfferToListOfferWithCandidates(offers),
+                    HttpStatus.OK);
+        }catch(IllegalArgumentException ex){
+            ex.printStackTrace();
+        }
+        return response;
+    }
+
+    @GetMapping("offers-byOwnerName")
+    private ResponseEntity<List<OfferTotalRegistered>> getOfferByOwnerName (@RequestBody AttributeString name){
+        ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>
+                (HttpStatus.NO_CONTENT);
+        try{
+            List<Offer> offers = offerService.findOfferByOwnerName(name.getName());
+            response =  new ResponseEntity<List<OfferTotalRegistered>>
+                    (Helper.convertListOfferToListOfferTotalRegistered(offers), HttpStatus.OK);
+        }catch(IllegalArgumentException ex){
+            ex.printStackTrace();
+        }
+        return response;
+    }
+
+    @DeleteMapping("delete-offer/{id}")
+    private ResponseEntity deleteOfferById (@PathVariable("id") long idOffer){
+        offerService.deleteOfferById(idOffer);
+        return ResponseEntity.ok("Offer removed successfully");
+//        ResponseEntity response = new ResponseEntity(HttpStatus.NO_CONTENT);
+//        try{
+//            offerService.deleteOfferById(idOffer.getId());
+//            response = ResponseEntity.ok("Offer removed successfully");
+//        }catch (NullPointerException ex){
+//            ex.printStackTrace();
+//        }
+//        return response;
+    }
+
+
+
+
+
+
 
 }

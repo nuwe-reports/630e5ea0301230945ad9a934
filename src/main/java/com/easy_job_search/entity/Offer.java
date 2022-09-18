@@ -24,7 +24,7 @@ public class Offer {
     private String description;
     private String[] skills;
     private LocalDate releaseDate;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinTable(name = "offer_company", joinColumns = @JoinColumn(name = "offer_id"),
             inverseJoinColumns = @JoinColumn(name = "company_user_id"))
     private Company owner;

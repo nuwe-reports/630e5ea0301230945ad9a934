@@ -6,13 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.LocalDate;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
 @Setter
-public class OfferResponse {
+public class OfferWithCandidate {
     private long id;
     private String position;
     @Enumerated(EnumType.STRING)
@@ -25,4 +27,5 @@ public class OfferResponse {
     private String[] skills;
     private LocalDate releaseDate;
     private CompanySimplify owner;
+    private List<CandidateResponse> candidates;
 }

@@ -14,9 +14,9 @@ public class Helper {
     public static OfferResponse convertOfferToOfferResponse(Offer offer){
         OfferResponse offerResponse = new OfferResponse();
         BeanUtils.copyProperties(offer, offerResponse);
-        CompanyShort companyShort = new CompanyShort();
-        BeanUtils.copyProperties(offer.getOwner(), companyShort);
-        offerResponse.setOwner(companyShort);
+        CompanySimplify companySimplify = new CompanySimplify();
+        BeanUtils.copyProperties(offer.getOwner(), companySimplify);
+        offerResponse.setOwner(companySimplify);
         return offerResponse;
     }
 
@@ -57,7 +57,7 @@ public class Helper {
         offers.stream().forEach(offer -> {
             OfferResponse offerResponse = new OfferResponse();
             BeanUtils.copyProperties(offer, offerResponse);
-            CompanyShort owner = new CompanyShort();
+            CompanySimplify owner = new CompanySimplify();
             BeanUtils.copyProperties(offer.getOwner(), owner);
             offerResponse.setOwner(owner);
             offerResponseList.add(offerResponse);
@@ -68,25 +68,49 @@ public class Helper {
     public static OfferTotalRegistered convertOfferToOfferTotalRegistered (Offer offer){
         OfferTotalRegistered offerTotalRegistered = new OfferTotalRegistered();
         BeanUtils.copyProperties(offer, offerTotalRegistered);
-        CompanyShort companyShort = new CompanyShort();
-        BeanUtils.copyProperties(offer.getOwner(), companyShort);
-        offerTotalRegistered.setOwner(companyShort);
+        CompanySimplify companySimplify = new CompanySimplify();
+        BeanUtils.copyProperties(offer.getOwner(), companySimplify);
+        offerTotalRegistered.setOwner(companySimplify);
         offerTotalRegistered.setTotalRegistered(offer.getCandidates().size());
         return offerTotalRegistered;
     }
 
-    public static List<OfferTotalRegistered> convertListOfferToOfferTotalRegistered(List<Offer> offers){
+    public static OfferWithCandidate convertOfferToOfferWithCandidate(Offer offer){
+        OfferWithCandidate offerCandidate = new OfferWithCandidate();
+        BeanUtils.copyProperties(offer, offerCandidate);
+        CompanySimplify companySimplify = new CompanySimplify();
+        BeanUtils.copyProperties(offer.getOwner(), companySimplify);
+        offerCandidate.setOwner(companySimplify);
+        offerCandidate.setCandidates(Helper.convertListCandidateToListCandidateResponse(offer.getCandidates()));
+        return offerCandidate;
+    }
+
+    public static List<OfferTotalRegistered> convertListOfferToListOfferTotalRegistered(List<Offer> offers){
         List<OfferTotalRegistered> listRegistered = new ArrayList<>();
         offers.stream().forEach(offer -> {
             OfferTotalRegistered offerTotalRegistered = new OfferTotalRegistered();
             BeanUtils.copyProperties(offer, offerTotalRegistered);
-            CompanyShort owner = new CompanyShort();
+            CompanySimplify owner = new CompanySimplify();
             BeanUtils.copyProperties(offer.getOwner(), owner);
             offerTotalRegistered.setOwner(owner);
             offerTotalRegistered.setTotalRegistered(offer.getCandidates().size());
             listRegistered.add(offerTotalRegistered);
         });
         return listRegistered;
+    }
+
+    public static List<OfferWithCandidate> convertListOfferToListOfferWithCandidates(List<Offer> offers){
+        List<OfferWithCandidate> offerCandidatesList = new ArrayList<>();
+        offers.stream().forEach(offer -> {
+            OfferWithCandidate offerCandidate = new OfferWithCandidate();
+            BeanUtils.copyProperties(offer, offerCandidate);
+            CompanySimplify owner = new CompanySimplify();
+            BeanUtils.copyProperties(offer.getOwner(), owner);
+            offerCandidate.setOwner(owner);
+            offerCandidate.setCandidates(Helper.convertListCandidateToListCandidateResponse(offer.getCandidates()));
+            offerCandidatesList.add(offerCandidate);
+        });
+        return offerCandidatesList;
     }
 
 

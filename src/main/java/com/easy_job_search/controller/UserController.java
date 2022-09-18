@@ -1,7 +1,7 @@
 package com.easy_job_search.controller;
 
 import com.easy_job_search.dto_input.AttributeId;
-import com.easy_job_search.dto_input.AttributeSomeString;
+import com.easy_job_search.dto_input.AttributeString;
 import com.easy_job_search.dto_output.CandidateResponse;
 import com.easy_job_search.dto_output.CompanyResponse;
 import com.easy_job_search.entity.*;
@@ -12,6 +12,7 @@ import com.easy_job_search.service.OfferService;
 import com.easy_job_search.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -97,10 +98,10 @@ public class UserController {
     }
 
     @GetMapping("search-companyByEmail")
-    public ResponseEntity<CompanyResponse> getCompanyByEmail(@RequestBody AttributeSomeString email){
+    public ResponseEntity<CompanyResponse> getCompanyByEmail(@RequestBody AttributeString email){
         ResponseEntity<CompanyResponse> response = new ResponseEntity<CompanyResponse>(HttpStatus.NO_CONTENT);
         try{
-            Company company = (Company) userService.findUserByEmail(email.getSomeString());
+            Company company = (Company) userService.findUserByEmail(email.getName());
             response = new ResponseEntity<CompanyResponse>(Helper.convertCompanyToCompanyResponse(company),
                     HttpStatus.OK);
         }catch (ClassCastException | IllegalArgumentException cce){
@@ -110,11 +111,11 @@ public class UserController {
     }
 
     @GetMapping("search-companyByFullName")
-    public ResponseEntity<List<CompanyResponse>> getCompanyByFullName(@RequestBody AttributeSomeString fullName){
+    public ResponseEntity<List<CompanyResponse>> getCompanyByFullName(@RequestBody AttributeString fullName){
 
         ResponseEntity<List<CompanyResponse>> response = new ResponseEntity<List<CompanyResponse>>(HttpStatus.NO_CONTENT);
         try{
-            List<Company> companies = companyService.findCompanyByFullName(fullName.getSomeString());
+            List<Company> companies = companyService.findCompanyByFullName(fullName.getName());
             response = new ResponseEntity<List<CompanyResponse>>
                     (Helper.convertListCompanyToListCompanyResponse(companies), HttpStatus.OK);
         }catch (ClassCastException | IllegalArgumentException cce){
@@ -212,10 +213,10 @@ public class UserController {
     }
 
     @GetMapping("search-candidateByEmail")
-    public ResponseEntity<CandidateResponse> getCandidateByEmail(@RequestBody AttributeSomeString email){
+    public ResponseEntity<CandidateResponse> getCandidateByEmail(@RequestBody AttributeString email){
         ResponseEntity<CandidateResponse> response = new ResponseEntity<CandidateResponse>(HttpStatus.NO_CONTENT);
         try{
-            Candidate candidate = (Candidate) userService.findUserByEmail(email.getSomeString());
+            Candidate candidate = (Candidate) userService.findUserByEmail(email.getName());
             response =  new ResponseEntity<CandidateResponse>(Helper.convertCandidateToCandidateResponse(candidate),
                     HttpStatus.OK);
         }catch (ClassCastException cce){
@@ -224,8 +225,22 @@ public class UserController {
             iae.printStackTrace();
         }
         return response;
-
     }
+
+    @DeleteMapping("delete-user/{id}")
+    private ResponseEntity deleteUserById (@PathVariable("id") long idUser){
+
+        ResponseEntity response = new ResponseEntity(HttpStatus.NO_CONTENT);
+        try{
+            userService.deleteUserById(idUser);
+            return ResponseEntity.ok("User removed successfully");
+        }catch (EmptyResultDataAccessException ex){
+            ex.printStackTrace();
+        }
+        return response;
+    }
+
+
 
 
 

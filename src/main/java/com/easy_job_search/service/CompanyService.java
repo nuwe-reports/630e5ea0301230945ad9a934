@@ -42,7 +42,7 @@ public class CompanyService {
 
     }
 
-    public Offer addOffer(Long companyId, Offer offer){
+    public Offer addOffer(long companyId, Offer offer){
         Company company = (Company) userService.findUserById(companyId);
         Offer o1 = offerService.createOffer(offer);
         o1.setOwner(company);

@@ -34,7 +34,7 @@ public class CandidateService {
         return (List<Candidate>) candidateRepo.findAll();
     }
 
-    public Offer registerToOffer(Long idUser, Long idOffer){
+    public Offer registerToOffer(long idUser, long idOffer){
         Candidate candidate = (Candidate) userService.findUserById(idUser);
         Offer offer = offerService.findOfferById(idOffer);
         candidate.getOffersRegisterIds().add(offer.getId());
