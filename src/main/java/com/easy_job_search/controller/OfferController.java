@@ -6,8 +6,8 @@ import com.easy_job_search.dto_input.RegisterOffer;
 import com.easy_job_search.dto_output.OfferResponse;
 import com.easy_job_search.dto_output.OfferTotalRegistered;
 import com.easy_job_search.dto_output.OfferWithCandidate;
-import com.easy_job_search.entity.JobType;
-import com.easy_job_search.entity.ModalityJob;
+import com.easy_job_search.utility.JobType;
+import com.easy_job_search.utility.ModalityJob;
 import com.easy_job_search.entity.Offer;
 import com.easy_job_search.helper.Helper;
 import com.easy_job_search.service.CandidateService;
@@ -210,14 +210,14 @@ public class OfferController {
 
     @GetMapping("offers-byOwnerName")
     private ResponseEntity<List<OfferTotalRegistered>> getOfferByOwnerName (@RequestBody AttributeString name){
+
         ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>
                 (HttpStatus.NO_CONTENT);
-        try{
-            List<Offer> offers = offerService.findOfferByOwnerName(name.getName());
-            response =  new ResponseEntity<List<OfferTotalRegistered>>
-                    (Helper.convertListOfferToListOfferTotalRegistered(offers), HttpStatus.OK);
-        }catch(IllegalArgumentException ex){
-            ex.printStackTrace();
+
+        List<Offer> offers = offerService.findOfferByOwnerName(name.getName());
+        if(offers.size() != 0){
+        response = new ResponseEntity<List<OfferTotalRegistered>>
+                (Helper.convertListOfferToListOfferTotalRegistered(offers), HttpStatus.OK);
         }
         return response;
     }
@@ -226,14 +226,7 @@ public class OfferController {
     private ResponseEntity deleteOfferById (@PathVariable("id") long idOffer){
         offerService.deleteOfferById(idOffer);
         return ResponseEntity.ok("Offer removed successfully");
-//        ResponseEntity response = new ResponseEntity(HttpStatus.NO_CONTENT);
-//        try{
-//            offerService.deleteOfferById(idOffer.getId());
-//            response = ResponseEntity.ok("Offer removed successfully");
-//        }catch (NullPointerException ex){
-//            ex.printStackTrace();
-//        }
-//        return response;
+
     }
 
 

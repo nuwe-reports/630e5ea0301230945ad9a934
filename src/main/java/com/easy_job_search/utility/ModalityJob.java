@@ -1,4 +1,4 @@
-package com.easy_job_search.entity;
+package com.easy_job_search.utility;
 
 public enum ModalityJob {
 

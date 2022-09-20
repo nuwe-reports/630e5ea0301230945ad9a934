@@ -1,7 +1,7 @@
 package com.easy_job_search.dto_output;
 
-import com.easy_job_search.entity.JobType;
-import com.easy_job_search.entity.ModalityJob;
+import com.easy_job_search.utility.JobType;
+import com.easy_job_search.utility.ModalityJob;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -24,6 +24,9 @@ public class CompanyService {
     @Autowired
     private OfferService offerService;
 
+    @Autowired
+    private EmailService emailService;
+
     public Company createCompany(Company company) {
         return companyRepo.save(company);
     }
@@ -46,6 +49,7 @@ public class CompanyService {
         Company company = (Company) userService.findUserById(companyId);
         Offer o1 = offerService.createOffer(offer);
         o1.setOwner(company);
+        emailService.sendEmailToAllSubs(offer);
         return offerService.updateOffer(o1);
     }
 

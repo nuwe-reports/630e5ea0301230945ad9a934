@@ -1,0 +1,9 @@
+services:
+  easy_job:
+    build: .
+    container_name: "easy_job"
+    hostname: "easy_job"
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./:/app"

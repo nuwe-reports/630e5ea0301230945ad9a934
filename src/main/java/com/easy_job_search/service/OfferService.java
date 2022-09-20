@@ -1,14 +1,12 @@
 package com.easy_job_search.service;
 
-import com.easy_job_search.dto_output.OfferTotalRegistered;
-import com.easy_job_search.entity.JobType;
-import com.easy_job_search.entity.ModalityJob;
+import com.easy_job_search.utility.JobType;
+import com.easy_job_search.utility.ModalityJob;
 import com.easy_job_search.entity.Offer;
 import com.easy_job_search.repository.OfferRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
