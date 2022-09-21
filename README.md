@@ -34,13 +34,13 @@ La aplicación debe estar ejecutandose para poder ver la documentación de la AP
 
 http://localhost:8080/swagger-ui/index.html
 
-Diagrama de clases:
+Diagrama de clases entity:
 
 https://drive.google.com/file/d/1Tp2d-PUXwFuiJVj6SF7aSqKvhxe-dRaH/view?usp=sharing
 
 
 ## Setup
-Para ejecutar la aplicación en Docker, utilizar en la terminal el comando:
+Para ejecutar la aplicación en Docker, ejecutar en la terminal el comando:
 
 ```
 docker-compose up
@@ -59,4 +59,5 @@ Además, se realizaron pruebas unitarias de la capa servicio.
 
 ## Improvements
 
-Autorización y Autenticación de rutas, pudiendo implementar Spring Security.
+- Implementar mecanismos de Autorización y Autenticación, pudiendo usar para ello Spring Security.
+- Realizar tests de integración.
