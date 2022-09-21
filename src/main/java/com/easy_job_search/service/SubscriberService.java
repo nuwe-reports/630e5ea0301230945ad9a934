@@ -27,10 +27,6 @@ public class SubscriberService {
         return op.orElse(null);
     }
 
-    public Subscriber updateSubscribe(Subscriber subscriber){
-        return subscriberRepo.save(subscriber);
-    }
-
     public void deleteSubscriber(String email){
         Subscriber subscriber = this.findSubscriberByEmail(email);
         subscriberRepo.delete(subscriber);

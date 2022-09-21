@@ -5,6 +5,8 @@
 * [Technologies](#technologies)
 * [Documentation](#documentation)
 * [Setup](#setup)
+* [Testing](#testing)
+* [Improvements](#Improvements)
 
 ## General info
 Api de busqueda de empleo, basada en los estilos de arquitectura de monolito y REST.
@@ -15,7 +17,8 @@ Se organiza en capas, teniendo diferentes paquetes:
 - service, incluye la lógica de negocios.
 - controller, se incluyen tres controladores, uno encargado de todas las peticiones relacionadas con los usuarios, otro para las ofertas y otro que permite que los usuarios se suscriban y reciban por email las ofertas de empleo más recientes.
 
-Además se crearon diferentes dto de entrada y salida para resgauardar la información sensible de los usuarios, los cuales se encuentran en el paquete dto.
+También incluye diferentes dto, tanto de entrada como de salida, para resgauardar la información sensible de los usuarios, los cuales se encuentran en el paquete dto.
+
 
 ## Technologies
 Project is created with:
@@ -37,8 +40,23 @@ https://drive.google.com/file/d/1Tp2d-PUXwFuiJVj6SF7aSqKvhxe-dRaH/view?usp=shari
 
 
 ## Setup
-Para ejecutar la aplicación en Docker, utilizar el comando:
+Para ejecutar la aplicación en Docker, utilizar en la terminal el comando:
 
 ```
 docker-compose up
 ```
+
+## Testing
+
+Postman Collection:
+
+La colección de peticiones en postman se encuentra en la carpeta raíz del proyecto.
+
+```
+easy-job.postman_collection.json
+```
+Además, se realizaron pruebas unitarias de la capa servicio.
+
+## Improvements
+
+Autorización y Autenticación de rutas, pudiendo implementar Spring Security.

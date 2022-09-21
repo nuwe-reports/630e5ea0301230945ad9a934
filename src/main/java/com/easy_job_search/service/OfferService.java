@@ -31,7 +31,7 @@ public class OfferService {
         return (List<Offer>) offerRepo.findAll();
     }
 
-    public Offer findOfferById(Long id){
+    public Offer findOfferById(long id){
         Optional<Offer> op = offerRepo.findById(id);
         return op.orElse(null);
     }

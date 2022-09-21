@@ -14,7 +14,7 @@ public class WorkExperience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private long id;
     private String position;
     private LocalDate startDate;
     private LocalDate finishDate;

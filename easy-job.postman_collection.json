@@ -1,0 +1,932 @@
+{
+	"info": {
+		"_postman_id": "f0959634-3e53-4d02-9715-aecdde8214da",
+		"name": "easy-job",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/test",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear compañia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fullName\": \"aguacate\",\r\n    \"email\": \"aguacate@email.com\",\r\n    \"password\": \"123456\",\r\n    \"address\": {\r\n        \"street\": \"calle arida\",\r\n        \"number\": \"10\",\r\n        \"floor\": \"bajos\",\r\n        \"door\": \"1\",\r\n        \"city\": \"marte rojo\",\r\n        \"country\": \"planeta rojo\",\r\n        \"planet\": \"marte\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/register-company",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"register-company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear candidato",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fullName\": \"maria perez\",\r\n    \"email\": \"mariaperez@email.com\",\r\n    \"password\": \"123456\",\r\n    \"address\": {\r\n        \"street\": \"desierto\",\r\n        \"number\": \"102\",\r\n        \"floor\": \"3\",\r\n        \"door\": \"4\",\r\n        \"city\": \"arena\",\r\n        \"country\": \"planeta rojo\",\r\n        \"planet\": \"marte\"\r\n    },\r\n    \"educationList\": [\r\n        {\r\n            \"typeOfDegree\": \"Licenciado en plenetologia\",\r\n            \"educationalInstitution\": \"Instituto Tecnologico de Marte\",\r\n            \"startDate\": \"2015-09-10\",\r\n            \"finishDate\": \"2020-06-02\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/register-candidate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"register-candidate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar usuario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/delete-user/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"delete-user",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear oferta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"position\": \"planetologo\",\r\n    \"jobType\": \"FULL_TIME\",\r\n    \"modalityJob\": \"PRESENTIAL\",\r\n    \"location\": \"sistema solar\",\r\n    \"sector\": \"exploracion y mineria\",\r\n    \"description\": \"descubir nuevos entornos y minerales en diferentes planetas del sistema solar\",\r\n    \"skills\": [\r\n        \"geografia\",\r\n        \"tecnologia\",\r\n        \"tecnicas de supervivencia\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/create-offer/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"create-offer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registrarse a una oferta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"candidateId\":\"2\",\r\n    \"offerId\":\"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/register-to-offer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"register-to-offer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar candidato",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"2\",\r\n    \"fullName\": \"maria perez lopez\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/update-candidate-personal-data",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"update-candidate-personal-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar educacion",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"typeOfDegree\": \"Certificado de profesionalidad  camarero\",\r\n    \"educationalInstitution\": \"escuela de camareros\",\r\n    \"startDate\": \"2013-01-01\",\r\n    \"finishDate\": \"2013-05-12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/add-education/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"add-education",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar experiencia de trabajo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"position\":\"camarero\",\r\n\"startDate\":\"2014-10-25\",\r\n\"description\":\"atención al cliente, gestión y entrega de comandas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/add-workExperience/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"add-workExperience",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lista de candidatos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"candidateId\":\"3\",\r\n    \"offerId\":\"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/candidates",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"candidates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda de candidato por email",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"mariaperez@email.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/search-candidateByEmail",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"search-candidateByEmail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda de candidato por id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/search-candidateById",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"search-candidateById"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar company",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"1\",\r\n    \"fullName\": \"aguacatito\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/update-company",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"update-company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lista de compañias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/companies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda de company por id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/search-companyById",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"search-companyById"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar compañia por nombre",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"aguacatito\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/search-companyByFullName",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"search-companyByFullName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda de compañia por email",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"aguacate@email.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/search-companyByEmail",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"search-companyByEmail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar oferta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"1\",\r\n    \"sector\":\"viajes al espacio\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/update-offer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"update-offer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lista de ofertas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offers-basic-data",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offers-basic-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lista de ofertas con numero registros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offers-total-registered",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offers-total-registered"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda de oferta por id / lista de candidatos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offer-byId-withCandidates",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offer-byId-withCandidates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oferta por id / total candidatos registrados",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offer-byId-totalRegistered",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offer-byId-totalRegistered"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda de ofertas por posición",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offers-byPosition/explorador",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offers-byPosition",
+						"explorador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda de oferta por tipo de trabajo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offers-byJobType/FULL_TIME",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offers-byJobType",
+						"FULL_TIME"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda oferta por modalidad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offers-byModality/PRESENTIAL",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offers-byModality",
+						"PRESENTIAL"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda oferta locacion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offers-byLocation/via lactea",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offers-byLocation",
+						"via lactea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda oferta sector",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offers-bySector/espacio",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offers-bySector",
+						"espacio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda oferta por skill",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offers-bySkill/geografia",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offers-bySkill",
+						"geografia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda oferta por id owner",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offers-byOwnerId",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offers-byOwnerId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar oferta por owner name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"aguacate\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/offers-byOwnerName",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"offers-byOwnerName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar oferta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/delete-offer/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"delete-offer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "suscribirse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"mgangelini.88@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/subscribe",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"subscribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar suscripcion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"mgangelini.88@email.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/easy-job-search/unsubscribe",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"easy-job-search",
+						"unsubscribe"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

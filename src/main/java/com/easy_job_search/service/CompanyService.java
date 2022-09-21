@@ -23,7 +23,6 @@ public class CompanyService {
     private CompanyRepo companyRepo;
     @Autowired
     private OfferService offerService;
-
     @Autowired
     private EmailService emailService;
 
