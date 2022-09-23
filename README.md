@@ -61,5 +61,5 @@ Además, se realizaron pruebas unitarias de la capa servicio.
 
 - Implementar mecanismos de Autorización y Autenticación, pudiendo usar para ello Spring Security.
 - Realizar tests de integración.
-- Para implementar la suscripción de candidatos a recibir nuevas ofertas de empleo, en el properties se configura tanto con gmail como con un servicio de envio de mails (sendinblue).
+- Para implementar la suscripción de candidatos a recibir nuevas ofertas de empleo, se configuró tanto con gmail como con un servicio de envio de mails (sendinblue), ambas opciones funcionan, se dejó habilitada la opción con gmail.
 En ambos casos están expuestas las contraseñas que se crearon para el uso de aplicaciones de terceros menos seguras, por lo cual, una mejora a implementar sería utilizar un sistema de bóvedas para evitar dicha exposición.
