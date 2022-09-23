@@ -3,14 +3,11 @@ package com.easy_job_search.service;
 import com.easy_job_search.entity.Candidate;
 import com.easy_job_search.entity.Offer;
 import com.easy_job_search.repository.CandidateRepo;
-import com.easy_job_search.repository.OfferRepo;
-import com.easy_job_search.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class CandidateService {

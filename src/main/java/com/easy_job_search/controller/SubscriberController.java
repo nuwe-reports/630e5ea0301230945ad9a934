@@ -1,10 +1,7 @@
 package com.easy_job_search.controller;
 
 import com.easy_job_search.dto_input.AttributeString;
-import com.easy_job_search.dto_output.CandidateResponse;
-import com.easy_job_search.entity.Candidate;
 import com.easy_job_search.entity.Subscriber;
-import com.easy_job_search.helper.Helper;
 import com.easy_job_search.service.EmailService;
 import com.easy_job_search.service.SubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;

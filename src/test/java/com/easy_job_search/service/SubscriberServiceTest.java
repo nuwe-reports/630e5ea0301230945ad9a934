@@ -1,8 +1,6 @@
 package com.easy_job_search.service;
 
-import com.easy_job_search.entity.Address;
 import com.easy_job_search.entity.Subscriber;
-import com.easy_job_search.entity.User;
 import com.easy_job_search.repository.SubscriberRepo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

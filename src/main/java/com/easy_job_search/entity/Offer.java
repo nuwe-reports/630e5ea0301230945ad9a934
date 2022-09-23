@@ -4,7 +4,6 @@ import com.easy_job_search.utility.JobType;
 import com.easy_job_search.utility.ModalityJob;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;

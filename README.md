@@ -32,7 +32,7 @@ Project is created with:
 
 La aplicación debe estar ejecutandose para poder ver la documentación de la API en el siguiente enlace:
 
-http://localhost:8080/swagger-ui/index.html
+http://localhost:8080/swagger-ui-easy-job-search.html
 
 Diagrama de clases entity:
 
@@ -61,3 +61,5 @@ Además, se realizaron pruebas unitarias de la capa servicio.
 
 - Implementar mecanismos de Autorización y Autenticación, pudiendo usar para ello Spring Security.
 - Realizar tests de integración.
+- Para implementar la suscripción de candidatos a recibir nuevas ofertas de empleo, en el properties se configura tanto con gmail como con un servicio de envio de mails (sendinblue).
+En ambos casos están expuestas las contraseñas que se crearon para el uso de aplicaciones de terceros menos seguras, por lo cual, una mejora a implementar sería utilizar un sistema de bóvedas para evitar dicha exposición.

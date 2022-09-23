@@ -1,8 +1,6 @@
 package com.easy_job_search.dto_output;
 
 import com.easy_job_search.entity.Address;
-import com.easy_job_search.entity.Education;
-import com.easy_job_search.entity.WorkExperience;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

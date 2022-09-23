@@ -2,13 +2,11 @@ package com.easy_job_search.service;
 
 import com.easy_job_search.entity.Company;
 import com.easy_job_search.entity.Offer;
-import com.easy_job_search.entity.User;
 import com.easy_job_search.repository.CompanyRepo;
 import com.easy_job_search.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.Optional;
 
