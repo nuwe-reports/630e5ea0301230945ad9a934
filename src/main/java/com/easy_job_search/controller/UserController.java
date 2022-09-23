@@ -219,7 +219,7 @@ public class UserController {
     }
 
     @DeleteMapping("delete-user/{id}")
-    private ResponseEntity deleteUserById (@PathVariable("id") long idUser){
+    public ResponseEntity deleteUserById (@PathVariable("id") long idUser){
 
         ResponseEntity response = new ResponseEntity(HttpStatus.NO_CONTENT);
         try{

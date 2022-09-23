@@ -89,21 +89,21 @@ public class OfferController {
     }
 
     @GetMapping("offers-basic-data")
-    private ResponseEntity<List<OfferResponse>> getAllOffersWithOutRegistered(){
+    public ResponseEntity<List<OfferResponse>> getAllOffersWithOutRegistered(){
         List<Offer> offers = offerService.findAllOffer();
         return new ResponseEntity<>(Helper.convertListOfferToListOfferResponse(offers),
                 HttpStatus.OK);
     }
 
     @GetMapping("offers-total-registered")
-    private ResponseEntity<List<OfferTotalRegistered>> getAllOffersWithTotalRegistered(){
+    public ResponseEntity<List<OfferTotalRegistered>> getAllOffersWithTotalRegistered(){
         List<Offer> offers = offerService.findAllOffer();
         return new ResponseEntity<>(Helper.convertListOfferToListOfferTotalRegistered(offers),
                 HttpStatus.OK);
     }
 
     @GetMapping("offer-byId-totalRegistered")
-    private ResponseEntity<OfferTotalRegistered> getOfferByIdWithTotalRegistered(@RequestBody AttributeId idOffer){
+    public ResponseEntity<OfferTotalRegistered> getOfferByIdWithTotalRegistered(@RequestBody AttributeId idOffer){
         ResponseEntity<OfferTotalRegistered> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
         try{
             Offer offer = offerService.findOfferById(idOffer.getId());
@@ -117,7 +117,7 @@ public class OfferController {
     }
 
     @GetMapping("offer-byId-withCandidates")
-    private ResponseEntity<OfferWithCandidate> getOfferByIdWithCandidates(@RequestBody AttributeId idOffer){
+    public ResponseEntity<OfferWithCandidate> getOfferByIdWithCandidates(@RequestBody AttributeId idOffer){
         ResponseEntity<OfferWithCandidate> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
         try{
             Offer offer = offerService.findOfferById(idOffer.getId());
@@ -130,7 +130,7 @@ public class OfferController {
     }
 
     @GetMapping("offers-byPosition/{position}")
-    private ResponseEntity<List<OfferTotalRegistered>> getOfferByPosition (@PathVariable("position") String position){
+    public ResponseEntity<List<OfferTotalRegistered>> getOfferByPosition (@PathVariable("position") String position){
         ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
             List<Offer> offers = offerService.findOfferByPosition(position);
             if(!offers.isEmpty()){
@@ -141,7 +141,7 @@ public class OfferController {
     }
 
     @GetMapping("offers-byJobType/{jobType}")
-    private ResponseEntity<List<OfferTotalRegistered>> getOfferByJobType (@PathVariable("jobType") JobType jobType){
+    public ResponseEntity<List<OfferTotalRegistered>> getOfferByJobType (@PathVariable("jobType") JobType jobType){
         ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
         List<Offer> offers = offerService.findOfferByJobType(jobType);
         if(!offers.isEmpty()){
@@ -151,7 +151,7 @@ public class OfferController {
     }
 
     @GetMapping("offers-byModality/{modality}")
-    private ResponseEntity<List<OfferTotalRegistered>> getOfferByModalityJob
+    public ResponseEntity<List<OfferTotalRegistered>> getOfferByModalityJob
             (@PathVariable("modality") ModalityJob modality){
         ResponseEntity<List<OfferTotalRegistered>> response =
                 new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -163,7 +163,7 @@ public class OfferController {
     }
 
     @GetMapping("offers-byLocation/{location}")
-    private ResponseEntity<List<OfferTotalRegistered>> getOfferByLocation (@PathVariable("location") String location){
+    public ResponseEntity<List<OfferTotalRegistered>> getOfferByLocation (@PathVariable("location") String location){
         ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>(HttpStatus.NO_CONTENT);
         List<Offer> offers = offerService.findOfferByLocation(location);
         if(!offers.isEmpty()){
@@ -173,7 +173,7 @@ public class OfferController {
     }
 
     @GetMapping("offers-bySector/{sector}")
-    private ResponseEntity<List<OfferTotalRegistered>> getOfferBySector (@PathVariable("sector") String sector){
+    public ResponseEntity<List<OfferTotalRegistered>> getOfferBySector (@PathVariable("sector") String sector){
         ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>(HttpStatus.NO_CONTENT);
         List<Offer> offers = offerService.findOfferBySector(sector);
         if(!offers.isEmpty()){
@@ -183,7 +183,7 @@ public class OfferController {
     }
 
     @GetMapping("offers-bySkill/{skill}")
-    private ResponseEntity<List<OfferTotalRegistered>> getOfferBySkill (@PathVariable("skill") String skill){
+    public ResponseEntity<List<OfferTotalRegistered>> getOfferBySkill (@PathVariable("skill") String skill){
         ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>(HttpStatus.NO_CONTENT);
         List<Offer> offers = offerService.findOfferBySkill(skill);
         if(!offers.isEmpty()){
@@ -193,7 +193,7 @@ public class OfferController {
     }
 
     @GetMapping("offers-byOwnerId")
-    private ResponseEntity<List<OfferWithCandidate>> getOfferByOwnerId (@RequestBody AttributeId idCompany){
+    public ResponseEntity<List<OfferWithCandidate>> getOfferByOwnerId (@RequestBody AttributeId idCompany){
         ResponseEntity<List<OfferWithCandidate>> response = new ResponseEntity<List<OfferWithCandidate>>
                 (HttpStatus.NO_CONTENT);
         try{
@@ -206,7 +206,7 @@ public class OfferController {
     }
 
     @GetMapping("offers-byOwnerName")
-    private ResponseEntity<List<OfferTotalRegistered>> getOfferByOwnerName (@RequestBody AttributeString name){
+    public ResponseEntity<List<OfferTotalRegistered>> getOfferByOwnerName (@RequestBody AttributeString name){
 
         ResponseEntity<List<OfferTotalRegistered>> response = new ResponseEntity<List<OfferTotalRegistered>>
                 (HttpStatus.NO_CONTENT);
@@ -219,7 +219,7 @@ public class OfferController {
     }
 
     @DeleteMapping("delete-offer/{id}")
-    private ResponseEntity deleteOfferById (@PathVariable("id") long idOffer){
+    public ResponseEntity deleteOfferById (@PathVariable("id") long idOffer){
 
         ResponseEntity response = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         try {
