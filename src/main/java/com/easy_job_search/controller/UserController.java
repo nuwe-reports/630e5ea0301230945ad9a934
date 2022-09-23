@@ -41,14 +41,14 @@ public class UserController {
     @PostMapping("register-company")
     public ResponseEntity<CompanyResponse> registerCompany(@Valid @RequestBody Company company){
 
-        ResponseEntity<CompanyResponse> response = new ResponseEntity<CompanyResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+        ResponseEntity<CompanyResponse> response = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         try {
             Company c1 = companyService.createCompany(company);
-            response = new ResponseEntity<CompanyResponse>(Helper.convertCompanyToCompanyResponse(c1), HttpStatus.OK);
+            response = new ResponseEntity<>(Helper.convertCompanyToCompanyResponse(c1), HttpStatus.OK);
         } catch (DataIntegrityViolationException e) {
             e.printStackTrace();
-            response = new ResponseEntity<CompanyResponse>(HttpStatus.ALREADY_REPORTED);
+            response = new ResponseEntity<>(HttpStatus.ALREADY_REPORTED);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,7 +57,7 @@ public class UserController {
 
     @PutMapping("update-company")
     public ResponseEntity<CompanyResponse> updateCompany(@RequestBody Company company) {
-        ResponseEntity<CompanyResponse> response = new ResponseEntity<CompanyResponse>(HttpStatus.NO_CONTENT);
+        ResponseEntity<CompanyResponse> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
         try {
             Company c1 = (Company) userService.findUserById(company.getId());
             if (company.getFullName() != null) {
@@ -70,7 +70,7 @@ public class UserController {
                 c1.setAddress(company.getAddress());
             }
             companyService.updateCompany(c1);
-            response = new ResponseEntity<CompanyResponse>(Helper.convertCompanyToCompanyResponse(c1), HttpStatus.OK);
+            response = new ResponseEntity<>(Helper.convertCompanyToCompanyResponse(c1), HttpStatus.OK);
         } catch (ClassCastException | IllegalArgumentException | NullPointerException ex) {
             ex.printStackTrace();
         }
@@ -80,7 +80,7 @@ public class UserController {
     @GetMapping("companies")
     public ResponseEntity<List<CompanyResponse>> getCompaniesList(){
         List<Company> companies = companyService.findAllCompany();
-        return new ResponseEntity<List<CompanyResponse>>(Helper.convertListCompanyToListCompanyResponse(companies),
+        return new ResponseEntity<>(Helper.convertListCompanyToListCompanyResponse(companies),
                 HttpStatus.OK);
     }
 
@@ -89,7 +89,7 @@ public class UserController {
         ResponseEntity<CompanyResponse> response = new ResponseEntity<CompanyResponse>(HttpStatus.NO_CONTENT);
         try{
             Company company = (Company) userService.findUserById(idCompany.getId());
-            response = new ResponseEntity<CompanyResponse>(Helper.convertCompanyToCompanyResponse(company),
+            response = new ResponseEntity<>(Helper.convertCompanyToCompanyResponse(company),
                     HttpStatus.OK);
         }catch (ClassCastException | IllegalArgumentException cce){
             cce.printStackTrace();
@@ -102,8 +102,7 @@ public class UserController {
         ResponseEntity<CompanyResponse> response = new ResponseEntity<CompanyResponse>(HttpStatus.NO_CONTENT);
         try{
             Company company = (Company) userService.findUserByEmail(email.getName());
-            response = new ResponseEntity<CompanyResponse>(Helper.convertCompanyToCompanyResponse(company),
-                    HttpStatus.OK);
+            response = new ResponseEntity<>(Helper.convertCompanyToCompanyResponse(company), HttpStatus.OK);
         }catch (ClassCastException | IllegalArgumentException cce){
             cce.printStackTrace();
         }
@@ -116,8 +115,7 @@ public class UserController {
         ResponseEntity<List<CompanyResponse>> response = new ResponseEntity<List<CompanyResponse>>(HttpStatus.NO_CONTENT);
         try{
             List<Company> companies = companyService.findCompanyByFullName(fullName.getName());
-            response = new ResponseEntity<List<CompanyResponse>>
-                    (Helper.convertListCompanyToListCompanyResponse(companies), HttpStatus.OK);
+            response = new ResponseEntity<>(Helper.convertListCompanyToListCompanyResponse(companies), HttpStatus.OK);
         }catch (ClassCastException | IllegalArgumentException cce){
             cce.printStackTrace();
         }
@@ -129,14 +127,14 @@ public class UserController {
 
     @PostMapping("register-candidate")
     public ResponseEntity<CandidateResponse> registerCandidate(@Valid @RequestBody Candidate candidate){
-        ResponseEntity<CandidateResponse> response = new ResponseEntity<CandidateResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+        ResponseEntity<CandidateResponse> response = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         try {
             Candidate c1 = candidateService.createCandidate(candidate);
-            response = new ResponseEntity<CandidateResponse>(Helper.convertCandidateToCandidateResponse(c1), HttpStatus.OK);
+            response = new ResponseEntity<>(Helper.convertCandidateToCandidateResponse(c1), HttpStatus.OK);
         } catch (DataIntegrityViolationException e) {
             e.printStackTrace();
-            response = new ResponseEntity<CandidateResponse>(HttpStatus.ALREADY_REPORTED);
+            response = new ResponseEntity<>(HttpStatus.ALREADY_REPORTED);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -145,7 +143,7 @@ public class UserController {
 
     @PutMapping("update-candidate-personal-data")
     public ResponseEntity<CandidateResponse> updateCandidatePersonalData(@RequestBody Candidate candidate) {
-        ResponseEntity<CandidateResponse> response = new ResponseEntity<CandidateResponse>(HttpStatus.NO_CONTENT);
+        ResponseEntity<CandidateResponse> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
         try {
             Candidate c1 = (Candidate) userService.findUserById(candidate.getId());
             if (candidate.getFullName() != null) {
@@ -158,7 +156,7 @@ public class UserController {
                 c1.setAddress(candidate.getAddress());
             }
             candidateService.updateCandidate(c1);
-            response = new ResponseEntity<CandidateResponse>(Helper.convertCandidateToCandidateResponse(c1), HttpStatus.OK);
+            response = new ResponseEntity<>(Helper.convertCandidateToCandidateResponse(c1), HttpStatus.OK);
         }catch (ClassCastException | IllegalArgumentException | NullPointerException ex) {
             ex.printStackTrace();
         }
@@ -173,8 +171,7 @@ public class UserController {
             candidate.getEducationList().add(education);
             candidateService.updateCandidate(candidate);
         }
-        return new ResponseEntity<CandidateResponse>(Helper.convertCandidateToCandidateResponse(candidate),
-                HttpStatus.OK);
+        return new ResponseEntity<>(Helper.convertCandidateToCandidateResponse(candidate), HttpStatus.OK);
     }
 
     @PutMapping("add-workExperience/{idCandidate}")
@@ -185,15 +182,13 @@ public class UserController {
             candidate.getWorkExperienceList().add(workExperience);
             candidateService.updateCandidate(candidate);
         }
-        return new ResponseEntity<CandidateResponse>(Helper.convertCandidateToCandidateResponse(candidate),
-                HttpStatus.OK);
+        return new ResponseEntity<>(Helper.convertCandidateToCandidateResponse(candidate), HttpStatus.OK);
     }
 
     @GetMapping("candidates")
     public ResponseEntity<List<CandidateResponse>> getCandidatesList(){
         List<Candidate> candidates = candidateService.findAllCandidate();
-        return new ResponseEntity<List<CandidateResponse>>(Helper.convertListCandidateToListCandidateResponse(candidates),
-                HttpStatus.OK);
+        return new ResponseEntity<>(Helper.convertListCandidateToListCandidateResponse(candidates), HttpStatus.OK);
     }
 
     @GetMapping("search-candidateById")
@@ -201,12 +196,10 @@ public class UserController {
         ResponseEntity<CandidateResponse> response = new ResponseEntity<CandidateResponse>(HttpStatus.NO_CONTENT);
         try{
             Candidate candidate = (Candidate) userService.findUserById(idCandidate.getId());
-            response =  new ResponseEntity<CandidateResponse>(Helper.convertCandidateToCandidateResponse(candidate),
+            response =  new ResponseEntity<>(Helper.convertCandidateToCandidateResponse(candidate),
                     HttpStatus.OK);
-        }catch (ClassCastException cce){
-            cce.printStackTrace();
-        }catch (IllegalArgumentException iae){
-            iae.printStackTrace();
+        }catch (ClassCastException | IllegalArgumentException ex){
+            ex.printStackTrace();
         }
         return response;
 
@@ -214,15 +207,13 @@ public class UserController {
 
     @GetMapping("search-candidateByEmail")
     public ResponseEntity<CandidateResponse> getCandidateByEmail(@RequestBody AttributeString email){
-        ResponseEntity<CandidateResponse> response = new ResponseEntity<CandidateResponse>(HttpStatus.NO_CONTENT);
+        ResponseEntity<CandidateResponse> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
         try{
             Candidate candidate = (Candidate) userService.findUserByEmail(email.getName());
-            response =  new ResponseEntity<CandidateResponse>(Helper.convertCandidateToCandidateResponse(candidate),
+            response =  new ResponseEntity<>(Helper.convertCandidateToCandidateResponse(candidate),
                     HttpStatus.OK);
-        }catch (ClassCastException cce){
-            cce.printStackTrace();
-        }catch (IllegalArgumentException iae){
-            iae.printStackTrace();
+        }catch (ClassCastException | IllegalArgumentException ex){
+            ex.printStackTrace();
         }
         return response;
     }
@@ -239,13 +230,5 @@ public class UserController {
         }
         return response;
     }
-
-
-
-
-
-
-
-
 
 }

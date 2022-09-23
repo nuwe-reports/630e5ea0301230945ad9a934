@@ -653,7 +653,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/v1/easy-job-search/offers-byPosition/explorador",
+					"raw": "localhost:8080/v1/easy-job-search/offers-byPosition/planetologo",
 					"host": [
 						"localhost"
 					],
@@ -662,7 +662,7 @@
 						"v1",
 						"easy-job-search",
 						"offers-byPosition",
-						"explorador"
+						"planetologo"
 					]
 				}
 			},
@@ -728,7 +728,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/v1/easy-job-search/offers-byLocation/via lactea",
+					"raw": "localhost:8080/v1/easy-job-search/offers-byLocation/sistema solar",
 					"host": [
 						"localhost"
 					],
@@ -737,7 +737,7 @@
 						"v1",
 						"easy-job-search",
 						"offers-byLocation",
-						"via lactea"
+						"sistema solar"
 					]
 				}
 			},
@@ -827,7 +827,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"aguacate\"\r\n}",
+					"raw": "{\r\n    \"name\":\"aguacatito\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -906,7 +906,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"mgangelini.88@email.com\"\r\n}",
+					"raw": "{\r\n    \"email\":\"mgangelini.88@gmail.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
